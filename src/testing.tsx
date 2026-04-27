@@ -27,3 +27,13 @@ let c = new C();
 c.prop = 0; // OK
 c.count = "string";
 Type 'string' is not assignable to type 'number'.
+
+function C() {
+  this.constructorOnly = 0;
+  this.constructorUnknown = undefined;
+}
+C.prototype.method = function () {
+  this.constructorOnly = false;
+Type 'boolean' is not assignable to type 'number'.
+  this.constructorUnknown = "plunkbat"; // OK, the type is string | undefined
+};
