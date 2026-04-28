@@ -37,3 +37,21 @@ C.prototype.method = function () {
 Type 'boolean' is not assignable to type 'number'.
   this.constructorUnknown = "plunkbat"; // OK, the type is string | undefined
 };
+
+import { Component } from "react";
+class MyComponent extends Component {
+  render() {
+    this.props.b; // Allowed, since this.props is of type any
+  }
+}
+Use JSDoc @augments to specify the types explicitly. for instance:
+
+import { Component } from "react";
+/**
+ * @augments {Component<{a: number}, State>}
+ */
+class MyComponent extends Component {
+  render() {
+    this.props.b; // Error: b does not exist on {a:number}
+  }
+}
