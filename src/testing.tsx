@@ -55,3 +55,23 @@ class MyComponent extends Component {
     this.props.b; // Error: b does not exist on {a:number}
   }
 }
+
+/** @type{Array} */
+var x = [];
+ 
+x.push(1); // OK
+x.push("string"); // OK, x is of type Array<any>
+ 
+/** @type{Array.<number>} */
+var y = [];
+ 
+y.push(1); // OK
+y.push("string"); // Error, string is not assignable to number
+Try
+In function calls
+A call to a generic function uses the arguments to infer the type parameters. Sometimes this process fails to infer any types, mainly because of lack of inference sources; in these cases, the type parameters will default to any. For example:
+
+var p = new Promise((resolve, reject) => {
+  reject();
+});
+p; // Promise<any>;
