@@ -75,3 +75,17 @@ var p = new Promise((resolve, reject) => {
   reject();
 });
 p; // Promise<any>;
+
+// 1. Select the div element using the id property
+const app = document.getElementById("app");
+// 2. Create a new <p></p> element programmatically
+const p = document.createElement("p");
+// 3. Add the text content
+p.textContent = "Hello, World!";
+// 4. Append the p element to the div element
+app?.appendChild(p);
+After compiling and running the index.html page, the resulting HTML will be:
+
+<div id="app">
+  <p>Hello, World!</p>
+</div>
