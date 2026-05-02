@@ -89,3 +89,27 @@ After compiling and running the index.html page, the resulting HTML will be:
 <div id="app">
   <p>Hello, World!</p>
 </div>
+
+
+<div>
+  <p>Hello, World</p>
+  <p>TypeScript!</p>
+</div>;
+const div = document.getElementsByTagName("div")[0];
+div.children;
+// HTMLCollection(2) [p, p]
+div.childNodes;
+// NodeList(2) [p, p]
+After capturing the div element, the children prop will return an HTMLCollection list containing the HTMLParagraphElements. The childNodes property will return a similar NodeList list of nodes. Each p tag will still be of type HTMLParagraphElements, but the NodeList can contain additional HTML nodes that the HTMLCollection list cannot.
+
+Modify the HTML by removing one of the p tags, but keep the text.
+
+<div>
+  <p>Hello, World</p>
+  TypeScript!
+</div>;
+const div = document.getElementsByTagName("div")[0];
+div.children;
+// HTMLCollection(1) [p]
+div.childNodes;
+// NodeList(2) [p, text]
