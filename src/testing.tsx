@@ -113,3 +113,16 @@ div.children;
 // HTMLCollection(1) [p]
 div.childNodes;
 // NodeList(2) [p, text]
+
+/**
+ * Returns the first element that is a descendant of node that matches selectors.
+ */
+querySelector<K extends keyof HTMLElementTagNameMap>(selectors: K): HTMLElementTagNameMap[K] | null;
+querySelector<K extends keyof SVGElementTagNameMap>(selectors: K): SVGElementTagNameMap[K] | null;
+querySelector<E extends Element = Element>(selectors: string): E | null;
+/**
+ * Returns all element descendants of node that match selectors.
+ */
+querySelectorAll<K extends keyof HTMLElementTagNameMap>(selectors: K): NodeListOf<HTMLElementTagNameMap[K]>;
+querySelectorAll<K extends keyof SVGElementTagNameMap>(selectors: K): NodeListOf<SVGElementTagNameMap[K]>;
+querySelectorAll<E extends Element = Element>(selectors: string): NodeListOf<E>;
