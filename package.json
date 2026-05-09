@@ -11,13 +11,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@langchain/community": "^1.1.28",
+    "@langchain/core": "^1.1.45",
+    "@langchain/ibm": "^0.1.0",
+    "@langchain/textsplitters": "^1.0.1",
     "bootstrap": "^5.3.8",
+    "chromadb": "^3.4.3",
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "framer-motion": "^12.38.0",
+    "langchain": "^1.4.0",
     "lucide-react": "^1.14.0",
     "openai": "^6.36.0",
+    "pdf-parse": "^2.4.5",
     "react": "^19.2.5",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.5"

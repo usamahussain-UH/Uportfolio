@@ -53,7 +53,7 @@ function AiPlayground() {
     },
   ])
 
-  const canLive = useMemo(() => Boolean(import.meta.env.VITE_LIVE_CHAT === '1'), [])
+  const canLive = useMemo(() => true, [])
   const listRef = useRef<HTMLDivElement | null>(null)
 
   async function send() {
@@ -78,7 +78,11 @@ function AiPlayground() {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ messages: next.map(({ role, content }) => ({ role, content })) }),
       })
-      if (!res.ok) throw new Error(`Request failed: ${res.status}`)
+      if (!res.ok) {
+        const errBody = await res.json().catch(() => null)
+        const errMsg = errBody?.error ? `${res.status} — ${errBody.error}` : `${res.status}`
+        throw new Error(`Request failed: ${errMsg}`)
+      }
       const data = (await res.json()) as { content?: string }
       const final: Msg[] = [...next, { id: uid(), role: 'assistant' as const, content: data.content ?? 'No response.' }]
       setMsgs(final)
